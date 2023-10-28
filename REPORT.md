@@ -31,7 +31,18 @@
 
 
 
+
 ## Multimodality
 &nbsp;
+
+> Align before Fuse: Vision and Language
+Representation Learning with Momentum Distillation (NeurIPS 2021)  
+> [Paper](https://arxiv.org/abs/2107.07651), 
+> [Code](https://github.com/salesforce/ALBEF),
+> [Blog](https://blog.salesforceairesearch.com/align-before-fuse/),
+> [Slide](Slide/2023.10.20-SiamMAE-陈银.pptx)
+> ![img.png](Images/albef.png)
+>> 描述
+
 ### <font color=Green> Visual language navigation</font> 
 &nbsp;
