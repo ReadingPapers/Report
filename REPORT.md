@@ -7,13 +7,23 @@
 **---------------------------------目录-----------------------------**
 
 <!-- TOC -->
+  * [Deep Learning](#deep-learning)
+  * [NLP](#nlp)
   * [CV](#cv)
     * [<font color=Green> Facial expression recognition</font>](#font-colorgreen-facial-expression-recognitionfont)
   * [Multimodality](#multimodality)
-    * [<font color=Green> Visual language navigation</font>](#font-colorgreen-visual-language-navigationfont-)
+  * [Embodied AI](#embodied-ai)
+    * [<font color=Green> Navigation </font>](#font-colorgreen-navigation-font-)
+      * [Visual language navigation](#visual-language-navigation)
+    * [<font color=Green> Manipulate </font>](#font-colorgreen-manipulate-font-)
+    * [<font color=Green> Robotic </font>](#font-colorgreen-robotic-font-)
 <!-- TOC -->
 
 **---------------------------------目录-----------------------------**
+
+## Deep Learning
+
+## NLP
 
 ## CV
 
@@ -44,5 +54,19 @@ Representation Learning with Momentum Distillation (NeurIPS 2021)
 > ![img.png](Images/albef.png)
 >> 描述
 
-### <font color=Green> Visual language navigation</font> 
+&nbsp;
+
+
+## Embodied AI
+&nbsp;
+### <font color=Green> Navigation </font> 
+&nbsp;
+#### Visual language navigation
+
+
+&nbsp;
+### <font color=Green> Manipulate </font> 
+&nbsp;
+
+### <font color=Green> Robotic </font> 
 &nbsp;
