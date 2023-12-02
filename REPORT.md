@@ -8,6 +8,7 @@
 
 <!-- TOC -->
   * [Deep Learning](#deep-learning)
+    * [PETL: parameters effective transfer learning](#petl-parameters-effective-transfer-learning)
   * [NLP](#nlp)
   * [CV](#cv)
     * [<font color=Green> Facial expression recognition</font>](#font-colorgreen-facial-expression-recognitionfont)
@@ -22,6 +23,16 @@
 **---------------------------------目录-----------------------------**
 
 ## Deep Learning
+
+### PETL: parameters effective transfer learning
+
+> 相关链接：
+> - NLP领域的Prompt Tuning综述：[链接](https://mp.weixin.qq.com/s/dz6Ad_pVveXwe6O0RvF7iw) 
+> - [MAM adapter](https://mp.weixin.qq.com/s/dz6Ad_pVveXwe6O0RvF7iw): 对adapter等petl的相关变体进行了分析总结(推荐)
+> - 常见的petl变体：[AIM](https://github.com/taoyang1122/adapt-image-models)(代码友好) ，[lora](https://arxiv.org/pdf/2106.09685.pdf)，[Adapter](http://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf) ，[LST](https://github.com/ylsung/Ladder-Side-Tuning)
+> - [知乎](https://zhuanlan.zhihu.com/p/635686756)上对的petl总结（强推）
+> - 我自己的一些简单理解[petl简述](https://docs.google.com/presentation/d/14NLwCCgrwxSN30pNhAH5jUxKyRWuKS2r/edit?usp=drive_link)
+>> ![aim-adapter.png](Images%2Faim-adapter.png), ![lst-adapter.png](Images%2Flst-adapter.png), ![mam-adapter.png](Images%2Fmam-adapter.png)
 
 ## NLP
 
