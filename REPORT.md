@@ -63,7 +63,17 @@ Representation Learning with Momentum Distillation (NeurIPS 2021)
 > [Blog](https://blog.salesforceairesearch.com/align-before-fuse/),
 > [Slide](Slide/2023.10.20-SiamMAE-陈银.pptx)
 > ![img.png](Images/albef.png)
->> 描述
+>>  - In this paper, we introduce a contrastive loss to ALign the image and
+text representations BEfore Fusing (ALBEF) them through cross-modal attention,
+which enables more grounded vision and language representation learning. Unlike
+most existing methods, our method does not require bounding box annotations nor
+high-resolution images.
+>> - To improve learning from noisy web data, we propose
+momentum distillation, a self-training method which learns from pseudo-targets
+produced by a momentum model. We provide a theoretical analysis of ALBEF from
+a mutual information maximization perspective, showing that different training
+tasks can be interpreted as different ways to generate views for an image-text
+pair
 
 &nbsp;
 
