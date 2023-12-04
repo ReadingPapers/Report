@@ -9,6 +9,7 @@
 <!-- TOC -->
   * [Deep Learning](#deep-learning)
     * [PETL: parameters effective transfer learning](#petl-parameters-effective-transfer-learning)
+    * [MTL，multi-task learning](#mtlmulti-task-learning)
   * [NLP](#nlp)
   * [CV](#cv)
     * [<font color=Green> Facial expression recognition</font>](#font-colorgreen-facial-expression-recognitionfont)
@@ -34,9 +35,20 @@
 > - 我自己的一些简单理解[petl简述](https://docs.google.com/presentation/d/14NLwCCgrwxSN30pNhAH5jUxKyRWuKS2r/edit?usp=drive_link)
 >> ![aim-adapter.png](Images%2Faim-adapter.png), ![lst-adapter.png](Images%2Flst-adapter.png), ![mam-adapter.png](Images%2Fmam-adapter.png)
 
-## NLP
+&nbsp;
+### MTL，multi-task learning
+> 一些参考链接
+> - [知乎](https://www.zhihu.com/question/375794498)上关于多任务学习的回答
+> - [多目标优化](https://proceedings.neurips.cc/paper_files/paper/2018/file/432aca3a1e345e339f35a30c8f65edce-Paper.pdf)经典论文
 
+&nbsp;
+## NLP
+&nbsp;
+
+
+&nbsp;
 ## CV
+&nbsp;
 
 ### <font color=Green> Facial expression recognition</font>
 &nbsp;
