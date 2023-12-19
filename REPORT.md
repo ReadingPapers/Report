@@ -10,7 +10,7 @@
   * [Deep Learning](#deep-learning)
     * [PETL: parameters effective transfer learning](#petl-parameters-effective-transfer-learning)
     * [MTL，multi-task learning](#mtlmulti-task-learning)
-    * [MoE, Mixture of Experts](#moemixture-of-experts)
+    * [MoE, Mixture of Experts](#moe-mixture-of-experts)
   * [NLP](#nlp)
   * [CV](#cv)
     * [<font color=Green> Facial expression recognition</font>](#font-colorgreen-facial-expression-recognitionfont)
