@@ -10,6 +10,7 @@
   * [Deep Learning](#deep-learning)
     * [PETL: parameters effective transfer learning](#petl-parameters-effective-transfer-learning)
     * [MTL，multi-task learning](#mtlmulti-task-learning)
+    * [MoE, Mixture of Experts](#moemixture-of-experts)
   * [NLP](#nlp)
   * [CV](#cv)
     * [<font color=Green> Facial expression recognition</font>](#font-colorgreen-facial-expression-recognitionfont)
@@ -40,6 +41,12 @@
 > 一些参考链接
 > - [知乎](https://www.zhihu.com/question/375794498)上关于多任务学习的回答
 > - [多目标优化](https://proceedings.neurips.cc/paper_files/paper/2018/file/432aca3a1e345e339f35a30c8f65edce-Paper.pdf)经典论文
+>
+
+&nbsp;
+### MoE, Mixture of Experts
+> 一些参考链接：
+> - [一文弄懂Mixture of Experts (MoE)的前世今生](https://mp.weixin.qq.com/s/u7bqG3skzklqDWu3MMmkzg)
 
 &nbsp;
 ## NLP
