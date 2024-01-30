@@ -3,6 +3,7 @@
 
 <h4 align="center"> :smile: Hi！Here is a knowledge repository shared by our group, encompassing meaningful papers, practical technical tools, intriguing topics, and more！ </h4>
 
+&nbsp;
 
 &nbsp;
 
@@ -68,10 +69,7 @@ ReadingPapers
 │    │    │    │    ├── 脑电信号情绪识别
 │    │    │    │    ├── 视觉语言导航
 │    │    │    │    └──
-│    │    │    ├── 其他相关的研究方向
-│    │    │    │    ├── 大模型
-│    │    │    │    ├── 对比学习
-│    │    │    │    ├── 自监督
+│    │    │    ├── 其他通用的研究方向
 │    │    │    └── 
 │    │    ├── 如何想ideas 
 │    │    ├── 论文实验&代码 
