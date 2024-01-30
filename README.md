@@ -44,7 +44,7 @@
 
 &nbsp;
 
-### Other
+### 项目文件目录
 
 ```
 ReadingPapers
