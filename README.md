@@ -8,8 +8,8 @@
 
 > 💡Tips：为了更好的维护这个仓库，在这里设置一些简单的规则，大家有建议可以及时提
 > 
-> > 1. 这个仓库中仅仅放置一些每周组会讨论的内容并及时更新，因此大家需要及时更新[REPORT.md](REPORT.md)
-> > 2. 对于一些学术分享，大家可以放到这个[share repo](https://github.com/ReadingPapers/Share)中
+> > 1. 这个仓库中仅仅放置一些每周组会讨论的内容和临时的学术分享资源，因此大家需要及时更新[REPORT.md](REPORT.md)
+> > 2. 对于一些成熟的学术分享，大家可以放到这个[share repo](https://github.com/ReadingPapers/Share)中
 > > 3. 为了能够“所见即所得”，一些ppt，pdf文件大家先放到这个[谷歌drive共享文件夹](https://drive.google.com/drive/folders/1n6cK69oLMHE6Dw4b-_EWb6DZGJZK02GY?usp=sharing)(<10G)中，然后在github中链接一下这些文件即可
 > > 
 
