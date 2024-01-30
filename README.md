@@ -1,17 +1,9 @@
 
-<h1 align="center"> :tada: Big News </h1>
+<h1 align="center"> :tada: 科研爱好者联盟-小组会报告分享 </h1>
 
 <h4 align="center"> :smile: Hi！Here is a knowledge repository shared by our group, encompassing meaningful papers, practical technical tools, intriguing topics, and more！ </h4>
 
-<div style="text-align: center;"> DDL是第一生产力:rocket:  </div>
 
-<br>
-
-
-[![img.png](Images/DDL.png)](https://aideadlin.es/?sub=CV,ML)   
-
-***
-&nbsp;
 &nbsp;
 
 > 💡Tips：为了更好的维护这个仓库，在这里设置一些简单的规则，大家有建议可以及时提
@@ -26,7 +18,29 @@
 
 ### Update
 
+如果有什么最新的资源分享，请在先在此处，更新一下例如：
 
+- 2024.01.10
+[实验记录管理方案](https://github.com/ReadingPapers/Report/blob/main/Slide/%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88.pdf)-shared by 陈银
+
+- 2023.11.03
+[基础概念扫盲贴](https://github.com/ReadingPapers/Report/blob/main/Slide/2023.11.3%20%E7%A8%8B%E6%B5%A9-%E6%89%AB%E7%9B%B2%E8%B4%B4.pdf) -shared by 程浩
+
+
+&nbsp;
+
+&nbsp;
+
+
+<div style="text-align: center;"> DDL是第一生产力  </div>
+
+<br>
+
+
+[![img.png](Images/DDL.png)](https://aideadlin.es/?sub=CV,ML)   
+
+***
+&nbsp;
 
 &nbsp;
 
