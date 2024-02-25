@@ -102,7 +102,7 @@ pair
 ### <font color=Green> Navigation </font> 
 &nbsp;
 #### Visual language navigation
-
+[论文阅读：Frequency-enhanced Data Augmentation for Vision-and-Language Navigation](http://t.csdnimg.cn/RI1p2)
 
 &nbsp;
 ### <font color=Green> Manipulate </font> 
