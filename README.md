@@ -28,6 +28,9 @@
 - 2023.11.03
 [基础概念扫盲贴](https://github.com/ReadingPapers/Report/blob/main/Slide/2023.11.3%20%E7%A8%8B%E6%B5%A9-%E6%89%AB%E7%9B%B2%E8%B4%B4.pdf) -shared by 程浩
 
+- 2024.2.25
+[论文阅读：Frequency-enhanced Data Augmentation for Vision-and-Language Navigation](http://t.csdnimg.cn/RI1p2) - shared by 张雪松
+
 
 &nbsp;
 
