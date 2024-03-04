@@ -42,7 +42,7 @@
 <br>
 
 
-[![img.png](Images/DDL.png)](https://aideadlin.es/?sub=CV,ML)   
+[![img.png](Images/DDL.png)](https://aideadlin.es/?sub=CV,ML,NLP)   
 
 ***
 &nbsp;
