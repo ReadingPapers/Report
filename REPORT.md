@@ -1,4 +1,4 @@
-
+![image](https://github.com/ReadingPapers/Report/assets/56926538/ddc7f3fb-d1f2-456a-b39e-b3b94d72d191)
 
 > 按照一下格式介绍分享的paper，定期归类整理！  
 内容包含：标题, 相关连接(pdf,code，silde), 一段话介绍，主要模型框架图
@@ -68,8 +68,21 @@
 
 &nbsp;
 
+### <font color=Green> Image + Video pretrain for downstream tasks</font>
+&nbsp;
+> EVT: BERT Pretraining of Video Transformers (CVPR 2022)
+> ![image](https://github.com/ReadingPapers/Report/assets/56926538/36d9776b-43a1-4336-b2d9-c71a30b0e2ad)
+>> 描述: 将 BERT-Style 预训练的方式扩展到了Video task, 将视频表征学习解耦成空间学习和时间学习，预测 target 仿照 bert 预测 visual tokens
 
+&nbsp;
+> OmniMAE: Single Model Masked Pretraining on Images and Videos (CVPR 2023)
+> ![image](https://github.com/ReadingPapers/Report/assets/56926538/694379e1-da39-4d82-b6cd-4fd7f9494ad5)
+>> 描述: 提出了统一的编码器解码器，一个模型可以接受图像或者视频的输入，使用 Image+Video 预训练可以使用极高的掩码率（iamge:90%, video:95%), 提升了下游任务的性能
 
+&nbsp;
+> ViC-MAE: Self-Supervised Representation Learning from Images and Video with Contrastive Masked Autoencoders 
+> ![image](https://github.com/ReadingPapers/Report/assets/56926538/2aa9cfc7-6816-4c1b-9d3d-0696946edcd2)
+>> 描述:  加入了对比学习，进一步提升了模型的表征能力，同时在 Image 和 video相关的 task上达到 sota 性能
 
 
 ## Multimodality
