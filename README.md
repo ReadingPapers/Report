@@ -13,7 +13,8 @@
 > > 2. [REPORT.md](REPORT.md)里面更新大家的“输入”(即学到的新知识)，[科研进展](科研进展.md)里面更新大家的“输出”(即最新的实验进展等)，从而鼓励大家互相攀比谁的“输入”“输出”多！
 > > 3. 对于一些成熟的学术分享，大家可以放到这个[share repo](https://github.com/ReadingPapers/Share)中
 > > 4. 为了能够“所见即所得”，一些ppt，pdf文件大家先放到这个[谷歌drive共享文件夹](https://drive.google.com/drive/folders/1n6cK69oLMHE6Dw4b-_EWb6DZGJZK02GY?usp=sharing)(<10G)中，然后在github中链接一下这些文件即可
-> > 5. 小 Tips: 将github.com替换成github.dev可以直接调用网页版vscode在网页中编辑打开仓库, 编辑完以后可以直接提交。
+> > 5. 暂时没有专门知乎账号，可以自己发布后投稿到精选专栏 [ReadingPapers分享精选 | 知乎](https://www.zhihu.com/column/c_1737122861716979712)
+> > 6. 小 Tips: 将github.com替换成github.dev可以直接调用网页版vscode在网页中编辑打开仓库, 编辑完以后可以直接提交。
 
 &nbsp;
 
