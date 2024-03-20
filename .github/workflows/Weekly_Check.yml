@@ -2,6 +2,7 @@ name: Weekly Check for Document Update
 
 on:
   schedule:
+    - cron: '46 21 * * 3'
     - cron: '0 19 * * 5'  # 每周五的 19:00 UTC 检查
 
 jobs:
