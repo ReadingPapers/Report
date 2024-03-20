@@ -3,7 +3,7 @@ name: Weekly Check for Document Update
 
 # 触发器配置
 on:
-  workflow_dispatch:
+  #workflow_dispatch:               # 手动触发器
   schedule:        
     - cron: '0 11 * * 5'           # 每周五的 11:00 UTC 执行，对应 UTC+8 时区的 19:00
 
