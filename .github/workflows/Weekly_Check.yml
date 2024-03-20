@@ -4,7 +4,7 @@ name: Weekly Check for Document Update
 # 触发器配置
 on:
   schedule:
-    - cron: '10 14 * * 3'          # 在每周三的 13:51 UTC 执行
+    - cron: '20 14 * * 3'         
     - cron: '0 11 * * 5'           # 每周五的 11:00 UTC 执行，对应 UTC+8 时区的 19:00
 
 # 工作定义
