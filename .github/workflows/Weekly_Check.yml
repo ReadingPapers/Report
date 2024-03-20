@@ -63,3 +63,5 @@ jobs:
             owner: context.repo.owner,  # 指定仓库所有者
             repo: context.repo.repo,    # 指定仓库名
             title: issueTitle,          # 使用
+            body: issueBody
+          });
