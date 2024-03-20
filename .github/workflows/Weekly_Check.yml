@@ -4,7 +4,7 @@ name: Weekly Check for Document Update
 # 触发器配置
 on:
   schedule:
-    - cron: '20 14 * * 3'         
+    - cron: '30 14 * * 3'         
     - cron: '0 11 * * 5'           # 每周五的 11:00 UTC 执行，对应 UTC+8 时区的 19:00
 
 # 工作定义
@@ -58,10 +58,10 @@ jobs:
           const notUpdatedMembers = '${{ steps.check_update.outputs.not_updated_members }}';
           const issueTitle = 'Weekly Report Update Reminder';  # 设置 Issue 的标题
           # 设置 Issue 的内容，提醒未更新的成员
-          const issueBody = `This is a reminder for the following members to update the weekly report document: ${notUpdatedMembers}`;
+          const issueBody = `以下成员本周还没进行论文精读打卡，不想周末加班的话请尽快咯: ${notUpdatedMembers}`;
           await github.rest.issues.create({
-            owner: context.repo.owner,  # 指定仓库所有者
-            repo: context.repo.repo,    # 指定仓库名
-            title: issueTitle,          # 使用
+            owner: context.repo.owner,  
+            repo: context.repo.repo,    
+            title: issueTitle,          
             body: issueBody
           });

@@ -33,7 +33,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const issueTitle = 'Document Update Required';
+            const issueTitle = '每周小会纪要.md Update Reminder';
             const issueBody = '本周的小组会纪要还没有更新哦，请作报告的同学尽快更新！';
             await github.rest.issues.create({
               owner: context.repo.owner,
