@@ -1,0 +1,50 @@
+name: Weekly Check for Document Update
+
+on:
+  schedule:
+    - cron: '0 19 * * 5'  # 每周五的 19:00 UTC 检查
+
+jobs:
+  check-document-update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Check for file update by each member
+      id: check_update
+      run: |
+        FILE='每周精读打卡.md'
+        MEMBERS=("hellojialee" "cyinen" "shonnon-zxs" "Cb1ock" "niejiantao" "xiaobaicuikai" "hui5555" "Archie1121" "2034419261")  # 用实际的 GitHub 用户名替换这里的成员名
+        LAST_FRIDAY=$(date --date="last friday" --utc +%Y-%m-%d)
+        NOT_UPDATED_MEMBERS=()
+
+        for MEMBER in "${MEMBERS[@]}"; do
+          LAST_COMMIT_DATE=$(git log -1 --pretty=format:%ai --author="$MEMBER" "$FILE")
+          if [[ "$LAST_COMMIT_DATE" < "$LAST_FRIDAY" ]]; then
+            NOT_UPDATED_MEMBERS+=("$MEMBER")
+          fi
+        done
+
+        if [ ${#NOT_UPDATED_MEMBERS[@]} -eq 0 ]; then
+          echo "All members have updated the file."
+        else
+          echo "Members who have not updated the file: ${NOT_UPDATED_MEMBERS[@]}"
+          echo "::set-output name=not_updated_members::${NOT_UPDATED_MEMBERS[*]}"
+        fi
+
+    - name: Create issue if not updated
+      if: steps.check_update.outputs.not_updated_members != ''
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const notUpdatedMembers = '${{ steps.check_update.outputs.not_updated_members }}';
+          const issueTitle = 'Weekly Report Update Reminder';
+          const issueBody = `This is a reminder for the following members to update the weekly report document: ${notUpdatedMembers}`;
+          await github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: issueTitle,
+            body: issueBody
+          });
