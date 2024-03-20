@@ -1,0 +1,43 @@
+name: Weekly Summary of Group Meeting Update Check
+
+on:
+  schedule:
+    - cron: '0 14 * * 5' # 每周五的 14:00 UTC 执行，对应 UTC+8 时区的 22:00
+
+jobs:
+  document-update-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Check for weekly file update
+        id: file_check
+        run: |
+          FILE='每周小会纪要.md'
+          LAST_COMMIT_DATE=$(git log -1 --pretty=format:%ai "$FILE")
+          LAST_FRIDAY=$(date --date="last friday" --utc +%Y-%m-%d)
+          TODAY=$(date --utc +%Y-%m-%d)
+          
+          if [[ "$LAST_COMMIT_DATE" > "$LAST_FRIDAY" && "$LAST_COMMIT_DATE" <= "$TODAY" ]]; then
+            echo "The file has been updated this week."
+          else
+            echo "The file has NOT been updated this week."
+            echo "Creating an issue to remind update..."
+            echo "::set-output name=update_needed::true"
+          fi
+
+      - name: Create Issue if Update Needed
+        if: steps.file_check.outputs.update_needed == 'true'
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const issueTitle = 'Document Update Required';
+            const issueBody = '本周的小组会纪要还没有更新哦，请作报告的同学尽快更新！';
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: issueTitle,
+              body: issueBody
+            });
