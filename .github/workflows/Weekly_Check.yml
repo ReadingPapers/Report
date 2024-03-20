@@ -27,8 +27,7 @@ jobs:
       run: |
         FILE='每周精读打卡.md'       # 指定要检查的文件
         # 定义需要检查的成员列表
-        #MEMBERS=("cyinen" "shonnon-zxs" "Cb1ock" "niejiantao" "xiaobaicuikai" "hui5555" "Archie1121" "2034419261")
-        MEMBERS = ("cyinen")
+        MEMBERS=("cyinen" "shonnon-zxs" "Cb1ock" "niejiantao" "xiaobaicuikai" "hui5555" "Archie1121" "2034419261")
         # 使用 UTC 时间计算上一个周五的日期
         LAST_FRIDAY=$(date --date="last friday" --utc +%Y-%m-%d)
         # 初始化未更新文件的成员数组
