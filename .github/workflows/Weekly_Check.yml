@@ -27,7 +27,8 @@ jobs:
       run: |
         FILE='每周精读打卡.md'       # 指定要检查的文件
         # 定义需要检查的成员列表
-        MEMBERS=("cyinen" "shonnon-zxs" "Cb1ock" "niejiantao" "xiaobaicuikai" "hui5555" "Archie1121" "2034419261")
+        #MEMBERS=("cyinen" "shonnon-zxs" "Cb1ock" "niejiantao" "xiaobaicuikai" "hui5555" "Archie1121" "2034419261")
+        MEMBERS = ("cyinen")
         # 使用 UTC 时间计算上一个周五的日期
         LAST_FRIDAY=$(date --date="last friday" --utc +%Y-%m-%d)
         # 初始化未更新文件的成员数组
@@ -59,7 +60,8 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           // 从输出中获取未更新成员列表并转换为GitHub用户提及格式
-          const notUpdatedMembersList = ${{ steps.check_update.outputs.not_updated_members }}.split(' ');
+          const notUpdatedMembers = '${{ steps.check_update.outputs.not_updated_members }}';
+          const notUpdatedMembersList = notUpdatedMembers.split(' ');
           const notUpdatedMembersMentions = notUpdatedMembersList.map(u => `@${u}`).join(' ');
           const issueTitle = '每周精读打卡.md Update Reminder';
           const issueBody = `以下成员本周还没进行论文精读打卡，请尽快更新以避免周末加班: ${notUpdatedMembersMentions}`;
