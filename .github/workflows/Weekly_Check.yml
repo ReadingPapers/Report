@@ -1,32 +1,45 @@
+# 工作流名称
 name: Weekly Check for Document Update
 
+# 触发器配置
 on:
   schedule:
-    - cron: '51 13 * * 3'
-    - cron: '0 11 * * 5'  # 每周五的 19:00 (UTC + 8:00) 检查
+    - cron: '00 14 * * 3'          # 在每周三的 13:51 UTC 执行
+    - cron: '0 11 * * 5'           # 每周五的 11:00 UTC 执行，对应 UTC+8 时区的 19:00
 
+# 工作定义
 jobs:
   check-document-update:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
+    runs-on: ubuntu-latest          # 运行在最新版的 Ubuntu 虚拟机上
 
+    steps:
+    # 第一步：检出代码
+    - name: Checkout repo
+      uses: actions/checkout@v2     # 使用 actions/checkout@v2 检出仓库代码
+
+    # 第二步：检查每个成员是否更新了文件
     - name: Check for file update by each member
       id: check_update
       run: |
-        FILE='每周精读打卡.md'
-        MEMBERS=("hellojialee" "cyinen" "shonnon-zxs" "Cb1ock" "niejiantao" "xiaobaicuikai" "hui5555" "Archie1121" "2034419261")  # 用实际的 GitHub 用户名替换这里的成员名
+        FILE='每周精读打卡.md'       # 指定要检查的文件
+        # 定义需要检查的成员列表
+        MEMBERS=("hellojialee" "cyinen" "shonnon-zxs" "Cb1ock" "niejiantao" "xiaobaicuikai" "hui5555" "Archie1121" "2034419261")
+        # 使用 UTC 时间计算上一个周五的日期
         LAST_FRIDAY=$(date --date="last friday" --utc +%Y-%m-%d)
+        # 初始化未更新文件的成员数组
         NOT_UPDATED_MEMBERS=()
 
+        # 循环每个成员，检查他们是否更新了指定文件
         for MEMBER in "${MEMBERS[@]}"; do
+          # 获取成员对指定文件的最后一次提交时间
           LAST_COMMIT_DATE=$(git log -1 --pretty=format:%ai --author="$MEMBER" "$FILE")
+          # 如果最后提交时间早于上一个周五，则添加到未更新数组中
           if [[ "$LAST_COMMIT_DATE" < "$LAST_FRIDAY" ]]; then
             NOT_UPDATED_MEMBERS+=("$MEMBER")
           fi
         done
 
+        # 如果有成员没有更新文件，则输出他们的用户名
         if [ ${#NOT_UPDATED_MEMBERS[@]} -eq 0 ]; then
           echo "All members have updated the file."
         else
@@ -34,18 +47,19 @@ jobs:
           echo "::set-output name=not_updated_members::${NOT_UPDATED_MEMBERS[*]}"
         fi
 
+    # 第三步：如果文件未更新，则创建一个提醒 Issue
     - name: Create issue if not updated
       if: steps.check_update.outputs.not_updated_members != ''
-      uses: actions/github-script@v5
+      uses: actions/github-script@v5     # 使用 github-script 执行脚本
       with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
+        github-token: ${{secrets.GITHUB_TOKEN}}   # 使用 GITHUB_TOKEN 进行认证
         script: |
+          # 使用 GitHub API 创建 Issue
           const notUpdatedMembers = '${{ steps.check_update.outputs.not_updated_members }}';
-          const issueTitle = 'Weekly Report Update Reminder';
+          const issueTitle = 'Weekly Report Update Reminder';  # 设置 Issue 的标题
+          # 设置 Issue 的内容，提醒未更新的成员
           const issueBody = `This is a reminder for the following members to update the weekly report document: ${notUpdatedMembers}`;
           await github.rest.issues.create({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            title: issueTitle,
-            body: issueBody
-          });
+            owner: context.repo.owner,  # 指定仓库所有者
+            repo: context.repo.repo,    # 指定仓库名
+            title: issueTitle,          # 使用
