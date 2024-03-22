@@ -20,10 +20,13 @@ jobs:
         run: |
           FILE='每周小会纪要.md'
           LAST_COMMIT_DATE=$(git log -1 --pretty=format:%ai "$FILE")
+          LAST_COMMIT_TIMESTAMP=$(date --date="$LAST_COMMIT_DATE" +%s)
           LAST_FRIDAY=$(date --date="last friday" --utc +%Y-%m-%d)
+          LAST_FRIDAY_TIMESTAMP=$(date --date="$LAST_FRIDAY" +%s)
           TODAY=$(date --utc +%Y-%m-%d)
-          
-          if [[ "$LAST_COMMIT_DATE" > "$LAST_FRIDAY" && "$LAST_COMMIT_DATE" <= "$TODAY" ]]; then
+          TODAY_TIMESTAMP=$(date --date="$TODAY" +%s)
+
+          if [[ "$LAST_COMMIT_TIMESTAMP" -gt "$LAST_FRIDAY_TIMESTAMP" && "$LAST_COMMIT_TIMESTAMP" -le "$TODAY_TIMESTAMP" ]]; then
             echo "The file has been updated this week."
           else
             echo "The file has NOT been updated this week."
