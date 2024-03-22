@@ -18,6 +18,8 @@ jobs:
       - name: Check for weekly file update
         id: file_check
         run: |
+          #!/bin/bash
+          
           FILE='每周小会纪要.md'
           LAST_COMMIT_DATE=$(git log -1 --pretty=format:%ai "$FILE")
           LAST_FRIDAY=$(date --date="last friday" --utc +%Y-%m-%d)
@@ -30,6 +32,7 @@ jobs:
             echo "Creating an issue to remind update..."
             echo "::set-output name=update_needed::true"
           fi
+
 
       - name: Create Issue if Update Needed
         if: steps.file_check.outputs.update_needed == 'true'
