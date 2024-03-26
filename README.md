@@ -32,6 +32,10 @@
 - 2024.2.25
 [论文阅读：Frequency-enhanced Data Augmentation for Vision-and-Language Navigation](http://t.csdnimg.cn/RI1p2) - shared by 张雪松
 
+- 2024.03.26
+[如何在shell里面使用copilot](https://github.com/ReadingPapers/Share/blob/main/%E5%85%A5%E9%97%A8%E7%AF%87/%E5%A6%82%E4%BD%95%E5%9C%A8shell%E9%87%8C%E9%9D%A2%E4%BD%BF%E7%94%A8Github%20Copilot%3F.md) - shared by 程浩
+
+
 
 &nbsp;
 
