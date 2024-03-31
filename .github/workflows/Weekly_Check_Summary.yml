@@ -3,7 +3,7 @@ name: Weekly Summary of Group Meeting Update Check
 on:
   #workflow_dispatch: # 手动触发
   schedule:
-    - cron: '0 14 * * 5' # 每周五的 14:00 UTC 执行，对应 UTC+8 时区的 22:00
+    - cron: '0 15 * * 5' # 每周五的 15:00 UTC 执行，对应 UTC+8 时区的 23:00
 
 permissions:
   issues: write
@@ -24,12 +24,12 @@ jobs:
           FILE='每周小会纪要.md'
           LAST_COMMIT_DATE=$(git log -1 --pretty=format:%ai "$FILE")
           LAST_COMMIT_TIMESTAMP=$(date --date="$LAST_COMMIT_DATE" +%s)
-          LAST_FRIDAY=$(date --date="last friday" --utc +%Y-%m-%d)
-          LAST_FRIDAY_TIMESTAMP=$(date --date="$LAST_FRIDAY" +%s)
+          LAST_SATURDAY=$(date --date="last saturday" --utc +%Y-%m-%d)
+          LAST_SATURDAY_TIMESTAMP=$(date --date="$LAST_SATURDAY" +%s)
           TODAY=$(date --utc +%Y-%m-%d)
           TODAY_TIMESTAMP=$(date --date="$TODAY" +%s)
 
-          if [[ "$LAST_COMMIT_TIMESTAMP" -gt "$LAST_FRIDAY_TIMESTAMP" && "$LAST_COMMIT_TIMESTAMP" -le "$TODAY_TIMESTAMP" ]]; then
+          if [[ "$LAST_COMMIT_TIMESTAMP" -gt "$LAST_SATURDAY_TIMESTAMP" && "$LAST_COMMIT_TIMESTAMP" -le "$TODAY_TIMESTAMP" ]]; then
             echo "The file has been updated this week."
           else
             echo "The file has NOT been updated this week."
