@@ -45,7 +45,7 @@ jobs:
                                                 width: 1200,
                                                 height: 800,
                                             })
-                                            await page.goto('https://aideadlin.es/?sub=CV,ML,NLP');
+                                            await page.goto('https://aideadlin.es/?sub=CV,ML,NLP', {timeout: 60000});  // 增加超时时间到 60 秒
                                             await page.waitForNavigation({ waitUntil: 'networkidle0' });
                                             await page.screenshot({path: './Images/DDL.jpg'})
                                             await browser.close();
