@@ -47,7 +47,7 @@ jobs:
                                             })
                                             await page.goto('https://aideadlin.es/?sub=CV,ML,NLP');
                                             await page.waitForNavigation({ waitUntil: 'networkidle0' });
-                                            await page.screenshot({path: './Images/DDL.jpg', quality: 100, fullPage: true })
+                                            await page.screenshot({path: './Images/DDL.jpg'})
                                             await browser.close();
                                         })();"
 
