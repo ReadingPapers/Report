@@ -15,7 +15,6 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
@@ -46,4 +45,6 @@ jobs:
                     git config --global user.email "action@github.com"
                     git config --global user.name "GitHub Action"
                     git commit -am "Updated the DDL.png" || exit 0
-                    git push
+                    git push origin "main"
+              env:
+                    GH_TOKEN: ${{ secrets.GH_TOKEN }}
