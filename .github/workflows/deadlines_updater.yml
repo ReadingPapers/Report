@@ -12,6 +12,10 @@ on:
 
     workflow_dispatch:
 
+permissions:
+    issues: write
+    contents: read
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -41,9 +45,8 @@ jobs:
 
             - name: Commit and push if it changed
               run: |
-                    git diff
-                    git config --global user.email "action@github.com"
-                    git config --global user.name "GitHub Action"
-                    git commit -am "Updated the DDL.png" || exit 0
-                    git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/ReadingPapers/Report.git
-                    git push origin "main"
+                git diff
+                git config --global user.email "action@github.com"
+                git config --global user.name "GitHub Action"
+                git commit -am "Updated the image in README.md" || exit 0
+                git push
