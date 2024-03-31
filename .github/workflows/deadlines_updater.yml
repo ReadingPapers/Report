@@ -45,7 +45,9 @@ jobs:
 
             - name: Update deadlines snapshot
               run: |
-                      git config --global user.email "action@github.com"
-                      git config --global user.name "GitHub Action"
-                      git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/ReadingPapers/Report.git
-                      git push
+                    git config --global user.email "action@github.com"
+                    git config --global user.name "GitHub Action"
+                    git add .
+                    git commit -m "Update deadlines snapshot"
+                    git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/ReadingPapers/Report.git
+                    git push
