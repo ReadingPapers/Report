@@ -41,24 +41,12 @@ jobs:
                                         (async () => {
                                             const browser = await puppeteer.launch();
                                             const page = await browser.newPage();
+                                            page.setViewport({
+                                                width: 300,
+                                                height: 600,
+                                            })
                                             await page.goto('https://aideadlin.es/?sub=CV,ML,NLP');
-                                            const content = await page.evaluate(() => {
-                                                let element = document.querySelector('#coming_confs');
-                                                const endElement = document.querySelector('#past_confs');
-                                                let content = '';
-                                                while (element && element !== endElement) {
-                                                    content += element.outerHTML;
-                                                    element = element.nextElementSibling;
-                                                }
-                                                return content;
-                                            });
-                                            if (!content) {
-                                                console.error('Content not found');
-                                                await browser.close();
-                                                return;
-                                            }
-                                            await page.setContent(content); // 设置页面内容
-                                            await page.screenshot({path: './Images/DDL.png'}); // 截图
+                                            await page.screenshot({path: './Images/DDL.png', fullPage: true })
                                             await browser.close();
                                         })();"
 
