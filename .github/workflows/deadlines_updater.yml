@@ -1,0 +1,49 @@
+name: Update deadlines snapshot
+
+on:
+    schedule:
+        - cron: '0 0 * * *'  # Runs every day at 00:00
+
+    push:
+        branches: [ "main" ]
+
+    pull_request:
+        branches: [ "main" ]
+
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                node-version: '14'
+
+            - name: Install Puppeteer
+              run: |
+                    npm install puppeteer
+
+            - name: Take screenshot
+              run: |
+                    node -e "const puppeteer = require('puppeteer');
+                    (async () => {
+                        const browser = await puppeteer.launch();
+                        const page = await browser.newPage();
+                        await page.goto('https://aideadlin.es/?sub=CV,ML,NLP');
+                        await page.screenshot({path: './Images/DDL.png'});
+                        await browser.close();
+                    })();"
+
+            - name: Commit and push if it changed
+              run: |
+                    git diff
+                    git config --global user.email "action@github.com"
+                    git config --global user.name "GitHub Action"
+                    git commit -am "Updated the DDL.png" || exit 0
+                    git push
