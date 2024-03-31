@@ -42,11 +42,12 @@ jobs:
                                             const browser = await puppeteer.launch();
                                             const page = await browser.newPage();
                                             page.setViewport({
-                                                width: 300,
-                                                height: 600,
+                                                width: 1200,
+                                                height: 800,
                                             })
                                             await page.goto('https://aideadlin.es/?sub=CV,ML,NLP');
-                                            await page.screenshot({path: './Images/DDL.png', fullPage: true })
+                                            await page.waitForNavigation({ waitUntil: 'networkidle0' });
+                                            await page.screenshot({path: './Images/DDL.jpg', quality: 100, fullPage: true })
                                             await browser.close();
                                         })();"
 
