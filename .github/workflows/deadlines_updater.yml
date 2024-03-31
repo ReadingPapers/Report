@@ -15,7 +15,7 @@ on:
 permissions:
     repository-projects: write
     issues: write
-    contents: read
+    contents: write  # 修改为 write 权限以允许 push 操作
 
 jobs:
     build:
@@ -23,6 +23,8 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
+              with:
+                token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GITHUB_TOKEN 进行身份验证
 
             - name: Setup Node.js
               uses: actions/setup-node@v2
@@ -44,13 +46,10 @@ jobs:
                         await browser.close();
                     })();"
 
-            - name: Update deadlines snapshot
+            - name: Push changes
               run: |
-                git config --global user.email "action@github.com"
-                git config --global user.name "GitHub Action"
-                git add .
-                git commit -m "Update deadlines snapshot"
-                git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/ReadingPapers/Report.git
-                git push
-              env:
-                GH_TOKEN: ${{ secrets.GH_TOKEN }}
+                    git config --global user.name 'github-actions'
+                    git config --global user.email 'github-actions@github.com'
+                    git add ./Images/DDL.png
+                    git commit -m "Update deadlines snapshot"
+                    git push
