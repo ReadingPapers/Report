@@ -4,13 +4,13 @@ on:
     schedule:
         - cron: '0 0 * * *'  # Runs every day at 00:00
 
-    push:
-        branches: [ "main" ]
+    # push:
+    #     branches: [ "main" ]
 
-    pull_request:
-        branches: [ "main" ]
+    # pull_request:
+    #     branches: [ "main" ]
 
-    workflow_dispatch:
+    # workflow_dispatch:
 
 permissions:
     repository-projects: write
