@@ -28,8 +28,8 @@ jobs:
         FILE='每周精读打卡.md'       # 指定要检查的文件
         # 定义需要检查的成员列表
         MEMBERS=("cyinen" "shonnon-zxs" "Cb1ock" "niejiantao" "xiaobaicuikai" "hui5555" "Archie1121" "2034419261")
-        # 使用 UTC 时间计算上一个周五的日期
-        LAST_FRIDAY=$(date --date="last friday" --utc +%Y-%m-%d)
+        # 使用 UTC 时间计算上一个周六的日期
+        LAST_SATURDAY=$(date --date="last saturday" --utc +%Y-%m-%d)
         # 初始化未更新文件的成员数组
         NOT_UPDATED_MEMBERS=()
 
@@ -38,7 +38,7 @@ jobs:
           # 获取成员对指定文件的最后一次提交时间
           LAST_COMMIT_DATE=$(git log -1 --pretty=format:%ai --author="$MEMBER" "$FILE")
           # 如果最后提交时间早于上一个周五，则添加到未更新数组中
-          if [[ "$LAST_COMMIT_DATE" < "$LAST_FRIDAY" ]]; then
+          if [[ "$LAST_COMMIT_DATE" < "$LAST_SATURDAY" ]]; then
             NOT_UPDATED_MEMBERS+=("$MEMBER")
           fi
         done
