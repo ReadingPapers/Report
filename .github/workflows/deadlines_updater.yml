@@ -45,6 +45,5 @@ jobs:
                     git config --global user.email "action@github.com"
                     git config --global user.name "GitHub Action"
                     git commit -am "Updated the DDL.png" || exit 0
+                    git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/ReadingPapers/Report.git
                     git push origin "main"
-              env:
-                    GH_TOKEN: ${{ secrets.GH_TOKEN }}
