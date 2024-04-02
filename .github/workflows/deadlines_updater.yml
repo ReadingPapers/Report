@@ -2,7 +2,7 @@ name: Update deadlines snapshot
 
 on:
     schedule:
-        - cron: '* * * * *'  # Runs every day at 00:00
+        - cron: '0 * * * *'  # Runs every day at 00:00
 
     # push:
     #     branches: [ "main" ]
