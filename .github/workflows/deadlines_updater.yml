@@ -2,7 +2,7 @@ name: Update deadlines snapshot
 
 on:
     schedule:
-        - cron: '0 * * * *'  # Runs every day at 00:00
+        - cron: '0 * * * *'  # Runs every hour
 
     # push:
     #     branches: [ "main" ]
@@ -10,7 +10,7 @@ on:
     # pull_request:
     #     branches: [ "main" ]
 
-    workflow_dispatch:
+    # workflow_dispatch:
 
 permissions:
     repository-projects: write
