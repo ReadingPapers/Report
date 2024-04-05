@@ -1,9 +1,9 @@
 name: Weekly Summary of Group Meeting Update Check
 
 on:
-  #workflow_dispatch: # 手动触发
-  schedule:
-    - cron: '0 15 * * 5' # 每周五的 15:00 UTC 执行，对应 UTC+8 时区的 23:00
+  workflow_dispatch: # 手动触发
+  # schedule:
+  #   - cron: '0 15 * * 5' # 每周五的 15:00 UTC 执行，对应 UTC+8 时区的 23:00
 
 permissions:
   issues: write
