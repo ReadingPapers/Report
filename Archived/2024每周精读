@@ -1,6 +1,105 @@
+######### 模版 #############
 
-2024年小组论文精读归档
+> week1 同一周在同一个level的bar上
+> 
+> [日期]-[first]-[论文标题]-[来源]（附带链接，链接可选，时间倒序）\
+> >
+> > 论文框架图（有助于一眼就能想起论文内容），宽度设置为512
+> >
+> > 论文简述 （一两句话总结精华，切勿过长）
+> 
+> [日期]-[second]-[论文标题]-[来源]（附带链接，链接可选，时间倒序）\
+> >
+> > 论文框架图（有助于一眼就能想起论文内容）
+> >
+> > 论文简述 （一两句话总结精华，切勿过长）
+> 
 
+> week2
+> 
+######### 模版 #############
+
+## 必须是【全文】精读的论文，如实记录
+
+> ==> 时间倒序，本次更新插入位置 <==
+>>[2025-1-17]-[陈银]-[Lifting Scheme-Based Implicit Disentanglement of Emotion-Related Facial Dynamics in the Wild]
+>><img width="512" alt="image" src="https://github.com/user-attachments/assets/16272c26-1dd5-4807-a938-02079914fdc1" />
+>>
+>>论文简述：在自然场景的视频中，情感相关的表情往往被时间上和空间上的非情感相关表情和全局背景信息所稀释，这使得情感识别变得困难。本文提出了一种新的隐式面部动态解缠框架，通过小波提升方案（lifting scheme），在不使用显式操作或外部引导的情况下，隐式地将情感相关动态信息从全局背景信息中分离出来，减轻了情感无关帧的负面影响。
+>
+> 
+> >[2025-1-13]-[徐赟博]-[ENVEDIT: Environment Editing for Vision-and-Language Navigation]
+> ><img width="512" alt="image" src="https://github.com/ReadingPapers/Report/blob/main/Images/Envedit.png">
+> >
+> >论文简述：本文提出了一种对VLN的数据增强技术，在保留关键语义信息的基础上，改变房间的风格、外观、对象类别来减少训练集和测试集之间的分布迁移问题。通过条件可控生成的技术进行环境的编辑，其中注入生成模型的控制条件是语义分割的mask，这样可以保留到环境中的语义信息（和一定程度的结构信息）。在生成数据和原始数据的可视化对比中，作者发现具有高度的对应关系。在导航能力的定量对比中，这种数据增强技术可以同时在Seen和Unseen场景下提升明显
+> >
+> >[2025-01-13]-[于洋晨]-上周多次期末考试以及课程报告，未精度
+>
+> > [2025-01-12]-[贾朋]-[SyncTalk- The Devil is in the Synchronization for Talking Head Synthesis](https://ziqiaopeng.github.io/synctalk/)
+> > <img width="512" alt="image" src="https://raw.githubusercontent.com/2351548518/images/main/20241219/20250109155213773.png">
+> >
+> > 论文简述: 传统的GAN很难保持一致的面部身份，而NeRF方法虽然可以解决这个问题，但通常会产生不匹配的嘴唇运动、面部表情不足和不稳定的头部姿势。作者提出了 SyncTalk这种基于 NeRF 的方法有效地保持了主体身份，增强了头部说话合成的同步性和真实感。SyncTalk 采用Face-Sync Controller将嘴唇运动与语音保持一致，并使用 3DMM 模型来捕捉准确的面部表情。大量的实验和用户研究表明，SyncTalk 在同步性和真实性方面优于最先进的方法。
+> 
+> > [2025-01-12]-[张雪松]-[Robustness Analysis of Video-Language Models Against Visual and Language Perturbations](https://proceedings.neurips.cc/paper_files/paper/2022/hash/de6ff07cbd222c10d694c2b2f732aceb-Abstract-Datasets_and_Benchmarks.html)
+> > <img width="512" alt="image" src="https://github.com/user-attachments/assets/65b0509c-6b61-409a-a64e-63d0ff171650">
+> >
+> > 论文简述: 本文首次对视频-语言模型在真实世界扰动下的鲁棒性进行了广泛的研究。作者提出了两个大规模基准数据集（MSRVTT-P和YouCook2-P），并利用90种视觉和35种文本扰动进行测试，从而揭示出一些有趣的初步发现：1）当仅文本被扰动时，模型比仅视频被扰动时更为鲁棒；2）经过预训练的模型比从头训练的模型更鲁棒；3）模型更多地关注场景和物体，而不是动作和运动。
+> 
+> > [2024-1-12]-[张宇]-[Waffling around for Performance: Visual Classification with  Random Words and Broad Concepts]-[ICCV23](https://openaccess.thecvf.com/content/ICCV2023/html/Roth_Waffling_Around_for_Performance_Visual_Classification_with_Random_Words_and_ICCV_2023_paper.html)
+> >
+> >  <img width="512" alt="image" src="https://github.com/ReadingPapers/Report/blob/main/Images/wallfclip.png">
+> >
+> >论文简述：LLM+CLIP的工作，但是探究的点很新颖，是探究性工作，一般LLM+CLIP的工作是使用类名单词作为强约束，多组符合常理的描述句子跟在类名单词后面作为细粒度的区分，但是这样的话很有可能是多组文本平均带来的性能提升，因为可能VLM不会真正理解那些一个类别多个描述的人为认定的细粒度描述语句（后面作者在实验中也证实了，如果它是从语言描述的细粒度程度上收益，那么按理说多组文本取max替代一般工作的mean方式也会表现不错，但是实验显示了换成max性能会大幅下降），这就更证实了作者的要探究的观点（胡乱的随机词作为类名之后的细粒度描述也能表现很好），所以也属于改进zero-shot的工作，prompt形式是“A photo of a {concept}: a {c}, which (is/has/etc) {随机单词或字符}.”所以还是有类名单词作为强约束的（因为后面消融也显示了只有随机字符作为监督性能不佳），为什么随机单词也能有区分呢？->可以把它看做是不同形式的噪声集成，可以理解成数据加噪，性能超越了使用专门设计的细粒度语言描述的工作。
+>
+> > [2024-1-12]-程浩- $\texttt{赶实验赶论文，未精读}$ \
+> > [2024-1-12]-[聂建涛]-[Detecting Facial Action Units From Global-Local Fine-Grained Expressions]-[paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10160018)
+> >
+> >  <img width="512" alt="image" src="https://github.com/ReadingPapers/Report/blob/main/Images/Detecting%20Facial%20Action%20Units%20From%20Global-Local%20Fine-Grained%20Expressions.png">
+> >
+> >论文简述：论文提出了一种新的面部动作单位（AU）检测方法GLEE-Net，通过全局-局部面部表情嵌入技术，缓解了因AU注释需要专业知识导致的身份过拟合问题，同时利用了未被标记的的面部表情数据集来辅助AU检测。GLEE-Net框架包含三个分支，分别提取与身份无关的表情特征，其中全局分支消除身份影响建模整体面部表情，局部分支关注特定面部区域。该方法先在面部表情数据集上预训练得到身份无关的表情嵌入，然后在小量的AU数据集上进行微调。此外，引入了3D全局分支通过3D人脸重建提取表情系数以加强2D AU描述，最终使用基于Transformer的多标签分类器融合所有表示进行AU检测。
+>
+> > [2025-01-11]-何艺超-[Contrastive Instruction Tuning]-[ACL 2024 Findings](http://arxiv.org/abs/2402.11138)
+> > <img width="512" alt="image" src=https://github.com/ReadingPapers/Report/blob/main/Images/COIN.png>
+> >
+> > 论文简述：作者针对指令微调在具体任务中过于依赖指令而在用户指令输入的单词错误，拼写错误，语法错误，语义错误中的表现不佳的问题，提出一种基于对比学习的指令微调，正样本对是原始指令和原始输入输出&原始指令改写指令和原始输入输出，然后负样本对是原始指令和原始输入输出&与任务无关指令和原始输入输出，或者是原始指令和原始输入输出&原始指令和与任务无关输入输出，同时将对比学习损失和LLM生成需要用的交叉熵损失结合，通过超参控制二者结合的比例，这种方法可以增强模型针对同一样本对于不同指令的语义理解，从而提高下游准确性。
+> > 
+> > [2025-01-11]-陈银-[Label-Guided Dynamic Spatial-Temporal Fusion for  Video-Based Facial Expression Recognition](https://ieeexplore.ieee.org/abstract/document/10552397)-[TMM]
+> >
+> > <img width="512" alt="image" src=https://raw.githubusercontent.com/cyinen/imge/master/20250108133119.png>
+>>
+>>论文简评：考虑到标签分布提供了图像的分类保真度，本文使用表情的分布来引导时空的融合。把 video的标签作为 label, 为每一个帧分配视频的 label, 并设计辅助损失函数来监督。利用学习到的标签分布计算一个动态权重，并用把权重用于时空融合。==有一种把监督信号加到中间，打破信息瓶颈的味道。==实验验证了为每一帧分配不同的权重是很重要的，能够让模型把注意力关注到更重要的帧上面，从而利用更有用的信息。**这个方向还有待深入研究**。
+> 
+> > [2025-1-5]-程浩-放假+实验+写论文=未精读\
+> >
+> > [2025-1-5]-[何艺超]-准备最后两门考试，未精读
+> >
+> > [2025-1-05]-[张雪松]-[ AeroVerse: UAV-Agent Benchmark Suite for Simulating, Pre-training, Finetuning, and Evaluating Aerospace Embodied World Models]-[paper](https://arxiv.org/pdf/2408.15511)
+> >
+> > <img width="512" alt="image" src="https://github.com/user-attachments/assets/10fec248-3237-46da-aeb7-2588ba9525cd">
+> >
+> > 论文简述：本文提出AeroVerse，作为无人机智能体领域的全新基准套件，包含AeroSimulator仿真平台、首个大规模真实图文预训练数据集AerialAgent-Ego10k与虚拟图文姿态对齐数据集CyberAgent-Ego500k，以及支持五类下游任务（场景感知、空间推理、导航探索、任务规划和动作决策）的微调数据集SkyAgent系列。此外，通过GPT-4开发的SkyAgent-Eval，实现更全面和客观的任务评估，有效揭示了现有2D/3D视觉语言模型在无人机任务中的潜力与局限性.（暂未开源，简单了解不算严格意义上的精读）
+> >
+> > [2025-1-05]-[徐赟博]-[SAME: Learning Generic Language-Guided Visual Navigation with State-Adaptive Mixture of Experts]
+> >
+> > <img width="512" alt="image" src="https://github.com/ReadingPapers/Report/blob/main/Images/SAME.png">
+> >
+> > 论文简述：本文提出了一种使用MOE的架构统一不同视觉语言导航任务的学习。作者首先使用了单独学习的方式，对不同语言引导程度的导航任务进行学习，发现这种方式会导致不同的任务之间产生负迁移的现象。于是，作者在Cross-Attention层引入MoE来促进多任务学习。但是，作者发现，直接进行moe的效果并不好，分析原因可能发生在不同导航任务的语言引导程度上（Zero/fine/coarse grined），于是作者在MoE层，预测路由概率时加入了与任务以及多模态相关的信息。促进了七种导航任务的多任务学习。实验做得不太完善，进行对比的很多工作都是没有在某个数据集上训练过的，但是也是在VLN中使用MoE的先河。
+> >
+> > [2025-01-05]-[贾朋]-[LES-Talker: Fine-Grained Emotion Editing for Talking Head Generation in Linear Emotion Space](https://peterfanfan.github.io/LES-Talker/)
+> > <img width="512" alt="image" src="https://raw.githubusercontent.com/2351548518/images/main/20241219/20250105215301644.png">
+> >
+> > 论文简述: 虽然现有的Talking head模型在粗粒度情感编辑方面取得了进展，但仍然缺乏具有高可解释性的细粒度情感编辑模型。作者提出了 LES-Talker，一种具有高可解释性的Talking head生成模型，以实现不同情感类型、情感水平和AU的细粒度情感编辑，提出了基于AU的线性情感空间（LES）定义，将情感变换描述为向量变换。设计了跨维度注意力网络（CDAN）来挖掘 LES 表示和 3D 模型表示之间的相关性，使 LES 表示能够指导 3D 模型的可控变形。
+> 
+> > [2025-1-5]-[张宇]-准备最后两门考试，未精度
+>
+> > [2024-1-5]-[聂建涛]-[FaceMixup: Enhancing Facial Expression Recognition through Mixed Face Regularization]-[paper](https://arxiv.org/pdf/2405.20259)
+> >
+> >  <img width="512" alt="image" src="https://github.com/ReadingPapers/Report/blob/main/Images/FaceMixup.png">
+> >
+> >论文简述：论文提出了一种新的面部数据增强方法，名为FaceMixup，旨在通过混合面部组件正则化来提高面部表情识别的性能。其主要思路是通过对不同类别的面部图像进行裁剪和替换操作来创建新的混合面部图像，并在训练过程中考虑这些类别信息。FaceMixup方法通过混合面部组件进行正则化，生成额外的训练样本，以此丰富数据集并提高深度学习模型的泛化能力。
+>
+> > [2025-01-05]-[陈银]-这周在改论文，未精度
+>
 > >[2024-12-30]-[于洋晨]-未精度
 >
 > >[2024-12-30]-[张雪松]-改自己的论文+泛读，未精读
@@ -1390,3 +1489,10 @@ Navigation by Revisiting Oracle Success Routes]-[Paper](https://researchers.mq.e
 > > 论文简述：
 > > 
 > > 在CLIP的基础上，提出多个模块，从affective, dynamic和bidirectional三个角度实现了动态情感对齐，达到了较高的performance。相比于之前的prompt learning ， 把text embeding增加了一个时间上的维度。在clip-based模型里达到了SOTA。
+
+
+
+
+
+
+
