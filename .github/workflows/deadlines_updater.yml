@@ -35,7 +35,6 @@ jobs:
             - name: Install Puppeteer
               run: |
                     npm install puppeteer
-
             - name: Take screenshot
               run: |
                 node -e "const puppeteer = require('puppeteer');
@@ -55,7 +54,7 @@ jobs:
                         });
                         
                         // 等待页面内容加载
-                        await page.waitForSelector('.main-content', {timeout: 30000}).catch(() => console.log('正在等待内容加载...'));
+                        await page.waitForSelector('main', {timeout: 30000}).catch(() => console.log('正在等待内容加载...'));
                         
                         // 额外等待时间让JavaScript完全执行
                         await page.waitForTimeout(5000);
@@ -63,10 +62,23 @@ jobs:
                         // 确保 Images 目录存在
                         await require('fs').promises.mkdir('./Images', { recursive: true }).catch(() => {});
                         
-                        // 截图
-                        await page.screenshot({path: './Images/DDL.png', fullPage: true});
+                        // 根据XPath找到元素
+                        const mainElement = await page.$x('/html/body/div[1]/div[2]/main');
+                        if (mainElement.length > 0) {
+                            // 只截取main元素部分
+                            await mainElement[0].screenshot({
+                                path: './Images/DDL.png'
+                            });
+                            console.log('成功截取main元素');
+                        } else {
+                            // 如果找不到元素，退回到全页截图
+                            console.log('无法找到指定元素，使用全页截图');
+                            await page.screenshot({path: './Images/DDL.png', fullPage: true});
+                        }
+                        
                         await browser.close();
-                    })();"
+                    })();"  # 使用 Node.js 脚本执行 Puppeteer 代码
+                    
             - name: Push changes
               run: |
                     git config --global user.name 'github-actions'
