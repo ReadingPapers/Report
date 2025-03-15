@@ -1,3 +1,4 @@
+# Author: Hao Cheng (cb1ock.github.com)
 name: Update deadlines snapshot
 
 on:
@@ -39,7 +40,9 @@ jobs:
               run: |
                 node -e "const puppeteer = require('puppeteer');
                     (async () => {
-                        const browser = await puppeteer.launch();
+                        const browser = await puppeteer.launch({
+                            args: ['--no-sandbox', '--disable-setuid-sandbox']
+                        });
                         const page = await browser.newPage();
                         await page.goto('https://huggingface.co/spaces/huggingface/ai-deadlines');
                         await page.screenshot({path: './Images/DDL.png'});
