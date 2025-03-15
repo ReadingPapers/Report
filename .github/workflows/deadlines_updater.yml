@@ -41,7 +41,7 @@ jobs:
                     (async () => {
                         const browser = await puppeteer.launch();
                         const page = await browser.newPage();
-                        await page.goto('https://aideadlin.es/?sub=CV,ML,NLP');
+                        await page.goto('https://huggingface.co/spaces/huggingface/ai-deadlines');
                         await page.screenshot({path: './Images/DDL.png'});
                         await browser.close();
                     })();"
