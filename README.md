@@ -47,7 +47,7 @@
 <br>
 
 
-[![img.png](Images/DDL.png)](https://aideadlin.es/?sub=CV,ML,NLP)   
+[![img.png](Images/DDL.png)](https://huggingface.co/spaces/huggingface/ai-deadlines)
 
 ***
 &nbsp;
