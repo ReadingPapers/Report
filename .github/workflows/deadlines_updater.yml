@@ -44,11 +44,29 @@ jobs:
                             args: ['--no-sandbox', '--disable-setuid-sandbox']
                         });
                         const page = await browser.newPage();
-                        await page.goto('https://huggingface.co/spaces/huggingface/ai-deadlines');
-                        await page.screenshot({path: './Images/DDL.png'});
+                        
+                        // 设置更大的视口以显示更多内容
+                        await page.setViewport({width: 1280, height: 960});
+                        
+                        // 访问页面
+                        await page.goto('https://huggingface.co/spaces/huggingface/ai-deadlines', {
+                            waitUntil: 'networkidle0', // 等待网络请求完成
+                            timeout: 60000 // 等待最多60秒
+                        });
+                        
+                        // 等待页面内容加载
+                        await page.waitForSelector('.main-content', {timeout: 30000}).catch(() => console.log('正在等待内容加载...'));
+                        
+                        // 额外等待时间让JavaScript完全执行
+                        await page.waitForTimeout(5000);
+                        
+                        // 确保 Images 目录存在
+                        await require('fs').promises.mkdir('./Images', { recursive: true }).catch(() => {});
+                        
+                        // 截图
+                        await page.screenshot({path: './Images/DDL.png', fullPage: true});
                         await browser.close();
                     })();"
-
             - name: Push changes
               run: |
                     git config --global user.name 'github-actions'
