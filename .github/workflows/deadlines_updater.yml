@@ -39,46 +39,52 @@ jobs:
               run: |
                 node -e "const puppeteer = require('puppeteer');
                     (async () => {
-                        const browser = await puppeteer.launch({
-                            args: ['--no-sandbox', '--disable-setuid-sandbox']
-                        });
-                        const page = await browser.newPage();
-                        
-                        // 设置更大的视口以显示更多内容
-                        await page.setViewport({width: 1280, height: 960});
-                        
-                        // 访问页面
-                        await page.goto('https://huggingface.co/spaces/huggingface/ai-deadlines', {
-                            waitUntil: 'networkidle0', // 等待网络请求完成
-                            timeout: 60000 // 等待最多60秒
-                        });
-                        
-                        // 等待页面内容加载
-                        await page.waitForSelector('main', {timeout: 30000}).catch(() => console.log('正在等待内容加载...'));
-                        
-                        // 额外等待时间让JavaScript完全执行
-                        await page.waitForTimeout(5000);
-                        
-                        // 确保 Images 目录存在
-                        await require('fs').promises.mkdir('./Images', { recursive: true }).catch(() => {});
-                        
-                        // 根据XPath找到元素
-                        const mainElement = await page.$x('/html/body/div[1]/div[2]/main');
-                        if (mainElement.length > 0) {
-                            // 只截取main元素部分
-                            await mainElement[0].screenshot({
-                                path: './Images/DDL.png'
+                        try {
+                            console.log('启动浏览器...');
+                            const browser = await puppeteer.launch({
+                                args: ['--no-sandbox', '--disable-setuid-sandbox']
                             });
-                            console.log('成功截取main元素');
-                        } else {
-                            // 如果找不到元素，退回到全页截图
-                            console.log('无法找到指定元素，使用全页截图');
-                            await page.screenshot({path: './Images/DDL.png', fullPage: true});
+                            const page = await browser.newPage();
+                            
+                            // 设置更大的视口以显示更多内容
+                            await page.setViewport({width: 1280, height: 960});
+                            
+                            console.log('开始加载页面...');
+                            // 使用更宽松的等待条件，提高超时时间
+                            await page.goto('https://huggingface.co/spaces/huggingface/ai-deadlines', {
+                                waitUntil: 'domcontentloaded', // 更宽松的等待条件
+                                timeout: 120000 // 增加到120秒
+                            });
+                            console.log('页面基本加载完成');
+                            
+                            // 确保 Images 目录存在
+                            await require('fs').promises.mkdir('./Images', { recursive: true }).catch(() => {});
+                            
+                            // 先截取当前可见内容（即使不完整）
+                            await page.screenshot({path: './Images/DDL.png'});
+                            console.log('已截取初始页面');
+                            
+                            // 尝试等待更多内容加载
+                            try {
+                                await page.waitForSelector('main', {timeout: 15000});
+                                console.log('main元素已加载');
+                                await page.waitForTimeout(3000);
+                                
+                                // 截取更新后的页面
+                                await page.screenshot({path: './Images/DDL.png', fullPage: true});
+                                console.log('已截取完整页面');
+                            } catch (innerErr) {
+                                console.log('等待元素超时，使用已有截图: ' + innerErr.message);
+                            }
+                            
+                            await browser.close();
+                            console.log('浏览器已关闭');
+                        } catch (err) {
+                            console.error('发生错误: ' + err.message);
+                            // 确保即使出错也返回成功，这样工作流可以继续
+                            process.exit(0);
                         }
-                        
-                        await browser.close();
-                    })();"  # 使用 Node.js 脚本执行 Puppeteer 代码
-                    
+                    })();"                    
             - name: Push changes
               run: |
                     git config --global user.name 'github-actions'
