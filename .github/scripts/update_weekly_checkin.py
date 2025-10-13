@@ -76,7 +76,7 @@ def main() -> int:
             quote_prefix = ">"
             break
 
-    new_line = f"{quote_prefix}[{date_str}]-[{AUTHOR}]-[本周未精读]"
+    new_line = f"{quote_prefix}[{date_str}]-[{AUTHOR}]-[本周未精读] \\"
 
     # Skip any trailing spaces-only line after anchor? Keep exact structure.
     # Check if the line right after anchor already has the same entry today.
