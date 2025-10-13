@@ -42,7 +42,9 @@ def main() -> int:
         content = f.read()
 
     date_str = get_today_shanghai_str()
-    new_line = f">[{date_str}]-[{AUTHOR}]-[本周未精读]"
+    # Decide blockquote prefix by inspecting following entries
+    # Default to nested blockquote "> >" to match existing style
+    quote_prefix = "> >"
 
     # Find anchor line position
     lines = content.splitlines()
@@ -54,12 +56,31 @@ def main() -> int:
         if idx == -1:
             raise RuntimeError("Anchor not found in target file")
 
-    # Determine insert position: right after the anchor line
+    # Determine insert position: after the anchor line
     insert_pos = idx + 1
+
+    # If the immediate next line is a single blockquote marker (">" with optional spaces),
+    # keep that empty line and insert after it for better readability.
+    if insert_pos < len(lines) and lines[insert_pos].strip().rstrip() in {">", ">>"}:
+        insert_pos += 1
+
+    # Inspect the first non-empty (non-pure ">") entry after anchor to choose prefix
+    for j in range(insert_pos, min(insert_pos + 5, len(lines))):
+        s = lines[j].lstrip()
+        if not s:
+            continue
+        if s.startswith("> >[") or s.startswith("> > ["):
+            quote_prefix = "> >"
+            break
+        if s.startswith(">[") or s.startswith("> ["):
+            quote_prefix = ">"
+            break
+
+    new_line = f"{quote_prefix}[{date_str}]-[{AUTHOR}]-[本周未精读]"
 
     # Skip any trailing spaces-only line after anchor? Keep exact structure.
     # Check if the line right after anchor already has the same entry today.
-    if insert_pos < len(lines) and lines[insert_pos].strip() == new_line:
+    if insert_pos < len(lines) and lines[insert_pos].strip() == new_line.strip():
         print("Entry for today already exists. No change.")
         return 0
 
