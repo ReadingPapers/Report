@@ -3,7 +3,7 @@ name: weekly-checkin
 on:
   schedule:
     # Runs at 00:00 UTC every Wednesday, which is 08:00 Asia/Shanghai
-    - cron: '0 0 * * 3'
+    - cron: '0 0 * * 6'
   workflow_dispatch: {}
 
 permissions:
